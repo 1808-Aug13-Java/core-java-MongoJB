@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class EvaluationService {
 
+
 	/**
 	 * 1. Without using the StringBuilder or StringBuffer class, write a method that
 	 * reverses a String. Example: reverse("example"); -> "elpmaxe"
@@ -14,10 +15,15 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String reverse(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		String reoderedString= new String();
+		
+		for(int reorder = string.length()-1; reorder>= 0; reorder--) {
+			reoderedString +=string.charAt(reorder);
+		}
+		return reoderedString;
+		
 	}
-
+	
 	/**
 	 * 2. Convert a phrase to its acronym. Techies love their TLA (Three Letter
 	 * Acronyms)! Help generate some jargon by writing a program that converts a
@@ -26,11 +32,20 @@ public class EvaluationService {
 	 * @param phrase
 	 * @return
 	 */
-	public String acronym(String phrase) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		
+		public String acronym(String phrase) {
+			String shortFor = "";
+			String resize = "[ ,-]+";
+			phrase = phrase.toUpperCase();
+			String[] splits = phrase.split(resize);
+			for(String part: splits) {
+				shortFor+= part.charAt(0);
+			}
+			return shortFor;
+		
 	}
-
+	
+	
 	/**
 	 * 3. Determine if a triangle is equilateral, isosceles, or scalene. An
 	 * equilateral triangle has all three sides the same length. An isosceles
@@ -40,62 +55,53 @@ public class EvaluationService {
 	 * different lengths.
 	 *
 	 */
-	static class Triangle {
-		private double sideOne;
-		private double sideTwo;
-		private double sideThree;
+		
+		static class Triangle {
+			private double sideOne;
+			private double sideTwo;
+			private double sideThree;
 
-		public Triangle() {
-			super();
-		}
+			public Triangle() {
+				super();
+			}
 
-		public Triangle(double sideOne, double sideTwo, double sideThree) {
-			this();
-			this.sideOne = sideOne;
-			this.sideTwo = sideTwo;
-			this.sideThree = sideThree;
-		}
-
-		public double getSideOne() {
-			return sideOne;
-		}
-
-		public void setSideOne(double sideOne) {
-			this.sideOne = sideOne;
-		}
-
-		public double getSideTwo() {
-			return sideTwo;
-		}
-
-		public void setSideTwo(double sideTwo) {
-			this.sideTwo = sideTwo;
-		}
-
-		public double getSideThree() {
-			return sideThree;
-		}
-
-		public void setSideThree(double sideThree) {
-			this.sideThree = sideThree;
-		}
-
-		public boolean isEquilateral() {
-			// TODO Write an implementation for this method declaration
-			return false;
-		}
-
-		public boolean isIsosceles() {
-			// TODO Write an implementation for this method declaration
-			return false;
-		}
-
-		public boolean isScalene() {
-			// TODO Write an implementation for this method declaration
-			return false;
-		}
-
-	}
+			public Triangle(double sideOne, double sideTwo, double sideThree) {
+				this();
+				this.sideOne = sideOne;
+				this.sideTwo = sideTwo;
+				this.sideThree = sideThree;
+			}
+			public double getSideOne() {
+				return sideOne;
+			}
+	 		public void setSideOne(double sideOne) {
+				this.sideOne = sideOne;
+			}
+	 		public double getSideTwo() {
+				return sideTwo;
+			}
+	 		public void setSideTwo(double sideTwo) {
+				this.sideTwo = sideTwo;
+			}
+	 		public double getSideThree() {
+				return sideThree;
+			}
+	 		public void setSideThree(double sideThree) {
+				this.sideThree = sideThree;
+			}
+	 		
+	 		public boolean isIsosceles() {
+				return sideOne == sideTwo || sideOne == sideThree;
+			}
+	 		public boolean isScalene() {
+				return sideOne != sideTwo && sideTwo != sideThree;
+			}
+	 		public boolean isEquilateral() {
+				return sideOne == sideTwo && sideTwo == sideThree;
+			}
+	 		
+	 	}
+	
 
 	/**
 	 * 4. Given a word, compute the scrabble score for that word.
@@ -112,11 +118,8 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public int getScrabbleScore(String string) {
-		// TODO Write an implementation for this method declaration
-		return 0;
-	}
-
+	
+	
 	/**
 	 * 5. Clean up user-entered phone numbers so that they can be sent SMS messages.
 	 * 
@@ -148,85 +151,107 @@ public class EvaluationService {
 	 * Note: As this exercise only deals with telephone numbers used in
 	 * NANP-countries, only 1 is considered a valid country code.
 	 */
-	public String cleanPhoneNumber(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
-	}
-
-	/**
-	 * 6. Given a phrase, count the occurrences of each word in that phrase.
-	 * 
-	 * For example for the input "olly olly in come free" olly: 2 in: 1 come: 1
-	 * free: 1
-	 * 
-	 * @param string
-	 * @return
-	 */
-	public Map<String, Integer> wordCount(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
-	}
-
-	/**
-	 * 7. Implement a binary search algorithm.
-	 * 
-	 * Searching a sorted collection is a common task. A dictionary is a sorted list
-	 * of word definitions. Given a word, one can find its definition. A telephone
-	 * book is a sorted list of people's names, addresses, and telephone numbers.
-	 * Knowing someone's name allows one to quickly find their telephone number and
-	 * address.
-	 * 
-	 * If the list to be searched contains more than a few items (a dozen, say) a
-	 * binary search will require far fewer comparisons than a linear search, but it
-	 * imposes the requirement that the list be sorted.
-	 * 
-	 * In computer science, a binary search or half-interval search algorithm finds
-	 * the position of a specified input value (the search "key") within an array
-	 * sorted by key value.
-	 * 
-	 * In each step, the algorithm compares the search key value with the key value
-	 * of the middle element of the array.
-	 * 
-	 * If the keys match, then a matching element has been found and its index, or
-	 * position, is returned.
-	 * 
-	 * Otherwise, if the search key is less than the middle element's key, then the
-	 * algorithm repeats its action on the sub-array to the left of the middle
-	 * element or, if the search key is greater, on the sub-array to the right.
-	 * 
-	 * If the remaining array to be searched is empty, then the key cannot be found
-	 * in the array and a special "not found" indication is returned.
-	 * 
-	 * A binary search halves the number of items to check with each iteration, so
-	 * locating an item (or determining its absence) takes logarithmic time. A
-	 * binary search is a dichotomic divide and conquer search algorithm.
-	 * 
-	 */
-	static class BinarySearch<T> {
-		private List<T> sortedList;
-
-		public int indexOf(T t) {
-			// TODO Write an implementation for this method declaration
-			return 0;
+	
+		public String cleanPhoneNumber(String string) throws IllegalArgumentException{
+			String digits= new String();
+			String disjoin = "[- ().]+";
+			String[] invalid = string.split(disjoin);
+			digits = String.join("", invalid);
+			if(digits.length()>11) {
+					throw new IllegalArgumentException();
+				}
+			for(char ph: digits.toCharArray()) {
+				if(ph=='*'|ph=='#'|ph=='0') {
+						throw new IllegalArgumentException();
+				}
+			}
+			return digits;	
 		}
 
-		public BinarySearch(List<T> sortedList) {
-			super();
-			this.sortedList = sortedList;
-		}
 
-		public List<T> getSortedList() {
-			return sortedList;
-		}
 
-		public void setSortedList(List<T> sortedList) {
-			this.sortedList = sortedList;
-		}
 
-	}
+/**
+ * 6. Given a phrase, count the occurrences of each word in that phrase.
+ * 
+ * For example for the input "olly olly in come free" olly: 2 in: 1 come: 1
+ * free: 1
+ * 
+ * @param string
+ * @return
+ */
+public Map<String, Integer> wordCount(String string) {
+	Map<String, Integer> wordCount = new HashMap<>();
+ 		String[] e = string.split("\\W+");
+ 		 		for (int v = 0; v < e.length; v++) {
+ 			if (wordCount.containsKey(e[v])) {
+ 				wordCount.put(e[v], 1);
+ 			} else {
+ 				wordCount.put(e[v], wordCount.get(e[v])+1);
+ 			}
+ 		}
+ 		return wordCount;
+ 	}
+}
 
-	/**
-	 * 8. Implement a program that translates from English to Pig Latin.
+/**
+ * 7. Implement a binary search algorithm.
+ * 
+ * Searching a sorted collection is a common task. A dictionary is a sorted list
+ * of word definitions. Given a word, one can find its definition. A telephone
+ * book is a sorted list of people's names, addresses, and telephone numbers.
+ * Knowing someone's name allows one to quickly find their telephone number and
+ * address.
+ * 
+ * If the list to be searched contains more than a few items (a dozen, say) a
+ * binary search will require far fewer comparisons than a linear search, but it
+ * imposes the requirement that the list be sorted.
+ * 
+ * In computer science, a binary search or half-interval search algorithm finds
+ * the position of a specified input value (the search "key") within an array
+ * sorted by key value.
+ * 
+ * In each step, the algorithm compares the search key value with the key value
+ * of the middle element of the array.
+ * 
+ * If the keys match, then a matching element has been found and its index, or
+ * position, is returned.
+ * 
+ * Otherwise, if the search key is less than the middle element's key, then the
+ * algorithm repeats its action on the sub-array to the left of the middle
+ * element or, if the search key is greater, on the sub-array to the right.
+ * 
+ * If the remaining array to be searched is empty, then the key cannot be found
+ * in the array and a special "not found" indication is returned.
+ * 
+ * A binary search halves the number of items to check with each iteration, so
+ * locating an item (or determining its absence) takes logarithmic time. A
+ * binary search is a dichotomic divide and conquer search algorithm.
+ * 
+ */
+
+static class BinarySearch<S> {
+    private List<S> sortedList;
+     public int indexOf(S s) {
+      return sortedList.indexOf(S);
+    }
+     public List<S> getOrderedList() {
+      return orderedList;
+    }
+     
+     public BinarySearch(List<S> orderedList) {
+         super();
+         this.orderedList = orderedList;
+       }
+     public void setOrderedList(List<S> orderedList) {
+      this.orderedList = sortedList;
+    }
+}
+
+
+
+/**
+ * 8. Implement a program that translates from English to Pig Latin.
 	 * 
 	 * Pig Latin is a made-up children's language that's intended to be confusing.
 	 * It obeys a few simple rules (below), but when it's spoken quickly it's really
@@ -242,45 +267,35 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public String toPigLatin(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
-	}
 
-	/**
-	 * 9. An Armstrong number is a number that is the sum of its own digits each
-	 * raised to the power of the number of digits.
-	 * 
-	 * For example:
-	 * 
-	 * 9 is an Armstrong number, because 9 = 9^1 = 9 10 is not an Armstrong number,
-	 * because 10 != 1^2 + 0^2 = 2 153 is an Armstrong number, because: 153 = 1^3 +
-	 * 5^3 + 3^3 = 1 + 125 + 27 = 153 154 is not an Armstrong number, because: 154
-	 * != 1^3 + 5^3 + 4^3 = 1 + 125 + 64 = 190 Write some code to determine whether
-	 * a number is an Armstrong number.
-	 * 
-	 * @param input
-	 * @return
-	 */
-	public boolean isArmstrongNumber(int input) {
-		// TODO Write an implementation for this method declaration
-		return false;
-	}
+/**
+ * 9. An Armstrong number is a number that is the sum of its own digits each
+ * raised to the power of the number of digits.
+ * 
+ * For example:
+ * 
+ * 9 is an Armstrong number, because 9 = 9^1 = 9 10 is not an Armstrong number,
+ * because 10 != 1^2 + 0^2 = 2 153 is an Armstrong number, because: 153 = 1^3 +
+ * 5^3 + 3^3 = 1 + 125 + 27 = 153 154 is not an Armstrong number, because: 154
+ * != 1^3 + 5^3 + 4^3 = 1 + 125 + 64 = 190 Write some code to determine whether
+ * a number is an Armstrong number.
+ * 
+ * @param input
+ * @return
+ */
 
-	/**
-	 * 10. Compute the prime factors of a given natural number.
-	 * 
-	 * A prime number is only evenly divisible by itself and 1.
-	 * 
-	 * Note that 1 is not a prime number.
-	 * 
-	 * @param l
-	 * @return
-	 */
-	public List<Long> calculatePrimeFactorsOf(long l) {
-		// TODO Write an implementation for this method declaration
-		return null;
-	}
+/**
+ * 10. Compute the prime factors of a given natural number.
+ * 
+ * A prime number is only evenly divisible by itself and 1.
+ * 
+ * Note that 1 is not a prime number.
+ * 
+ * @param l
+ * @return
+ */
+
+
 
 	/**
 	 * 11. Create an implementation of the rotational cipher, also sometimes called
